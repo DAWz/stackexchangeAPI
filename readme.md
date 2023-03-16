@@ -47,7 +47,7 @@ Finally you can use the `jar` file in `daw.dev.target`
   - user_id (Number) of the user who asked the question
 *You can head to /swagger-ui.html upon running the app to find detailed documentation for the APIs
 
-Addiotionally the exposes a `HTTP GET` endpoint that returns details about a user by id acting as a proxy to [StackOverflow.com Users Api](https://api.stackexchange.com/docs/users-by-ids) the resuslt of this prixy call is then cached in Simple Cache so that the same query does not lead to multiple calls to the StackOverflow API
+Additionally, the application exposes a `HTTP GET` endpoint that returns details about a user by id, acting as a proxy to [StackOverflow.com Users Api](https://api.stackexchange.com/docs/users-by-ids) the results of this proxy call are then cached in a Simple Cache so that the same query does not lead to multiple calls to the StackOverflow API.
 The following fields are returned for each user:
 - user_id (Number)
 - creation_date (datetime in ISO8601 format as String)
