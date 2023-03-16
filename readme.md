@@ -59,8 +59,8 @@ The following fields are returned for each user:
 Spring boot is most popular Java Framework now that is very powerful; providing annotations for almost everything and it has great community support.
 
 ### [H2 SQL in-memory database](https://www.h2database.com/html/main.html)
-H2 is an in-memory SQL database that has native support for Spring Boot, it made sense as a choice because the database needs to live for as long as the app is running and then has to be wiped with the next Stack Exchange API call which happens on app start.
-Inaddition, a relational database made sense as choice to for the referential capabilities provided that helped a great deal when implementing the getQuestionsByTags functionallity handling the many-to-many relationship between Tags and Questions making it easier to get all the questions for a specific tag with a simple join.
+H2 is an in-memory SQL database that has native support for Spring Boot, it made sense as a choice because the database needs to live for as long as the app is running and then it has to be wiped with the next Stack Exchange API call which happens on app start.
+In addition, a relational database made sense due to the referential capabilities provided that helped a great deal when implementing the getQuestionsByTags functionallity handling the many-to-many relationship between Tags and Questions making it easier to get all the questions for a specific tag with a simple join.
 
 ### [JPA + Hibernate](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
 The most widley used ORM for SQL for Spring Boot that provids great support for almost all basic database queries which abstracted away the Data_Access_Layer (Repository Level) completley by just extending JpaRepository which reduces code maintenance and testing.
