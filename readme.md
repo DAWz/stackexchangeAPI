@@ -9,7 +9,7 @@ For building and running the application you need:
 
 ## Running the application locally
 
-There are several ways to run the application on your local machine. One way is to execute the `main` method in the `dev.daw.springbootsample.Application` class from your IDE.
+There are several ways to run the application on your local machine. One way is to execute the `main` method in the `dev.daw.CodeSampleApplication` class from your IDE.
 
 Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html) like so:
 
@@ -27,9 +27,22 @@ And to run it use:
 docker run -d abdelrahmanosama1/code-sample:latest
 ```
 
-Finally you can use the `jar` file in `daw.dev.target`
+Finally you can use the `jar` file in `daw.dev.target`, create the .jar executable file using:
+```shell
+mvn install
+```
 
-## Description
+## Running test
+Use:
+```shell
+mvn clean install
+```
+Then run:
+```shell
+mvn clean test
+```
+
+## Project Description
 
 - The application is meant to call the stack exchange upon start to fetch the 20 latest featured questions by date from [StackOverflow.com Featured Questions API](https://api.stackexchange.com/docs/featured-questions)
 - The result of the call is stored in an in memory H2 SQL database (the database runs in memory with no presistence configuration)
@@ -55,6 +68,9 @@ The following fields are returned for each user:
 - display_name (String)
 
 ## Architectural decisisions/ tech stack
+
+### MVC Pattern
+The Model-View-Controller pattern is one of the most widley used design patterns in software engineering it ensures a great degree of seperation of concerns.
 
 ### [Spring Boot 3](https://spring.io)
 Spring boot is most popular Java Framework now that is very powerful; providing annotations for almost everything and it has great community support.
