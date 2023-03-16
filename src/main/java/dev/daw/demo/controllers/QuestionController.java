@@ -24,8 +24,7 @@ import java.util.List;
 @RequestMapping("/api/v1/questions")
 @Validated
 public class QuestionController {
-    @Autowired
-    QuestionRepo questionRepository;
+
     @Autowired
     QuestionService questionService;
 
@@ -102,7 +101,7 @@ public class QuestionController {
     })
     @GetMapping({"/tagSearch/{tags}", "/tagSearch/{tags}/"})
     @Validated
-    public ResponseEntity<List<QuestionDTO>> getQuestions(@PathVariable("tags") List<String> tags, @RequestParam("operation") @Pattern(regexp = "(?i)(any|all)", message = "operation must be one of any or all") String operation) {
+    public ResponseEntity<List<QuestionDTO>> getQuestionsByTag(@PathVariable("tags") List<String> tags, @RequestParam("operation") @Pattern(regexp = "(?i)(any|all)", message = "operation must be one of any or all") String operation) {
         List<QuestionDTO> questions = questionService.findByTags(tags, tags.size(), operation.equalsIgnoreCase("all"));
         if (questions.isEmpty()) {
             throw new ApplicationException(

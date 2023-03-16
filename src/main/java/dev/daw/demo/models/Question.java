@@ -59,6 +59,7 @@ public class Question {
     @Getter
     @Setter
     @JsonAlias("user_id")
+    @Column(name = "user_id")
     private int userID;
 
 

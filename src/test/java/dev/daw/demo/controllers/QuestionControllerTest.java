@@ -1,19 +1,15 @@
 package dev.daw.demo.controllers;
 
 import dev.daw.demo.exceptions.ApplicationException;
-import dev.daw.demo.models.Question;
 import dev.daw.demo.models.QuestionDTO;
 import dev.daw.demo.services.QuestionService;
-import org.json.HTTP;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -107,6 +103,7 @@ public class QuestionControllerTest {
 
 
     @Test
+    @DisplayName(value = "This test should return failure when trying to delete an question with the specific id")
     void deleteById_shouldReturnStatusNotFound() {
         when(mockQuestionService.deleteQuestion(anyInt())).thenReturn(null);
 

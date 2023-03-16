@@ -1,10 +1,8 @@
 package dev.daw.demo.controllers;
 
 import dev.daw.demo.exceptions.ApplicationException;
-import dev.daw.demo.models.QuestionDTO;
 import dev.daw.demo.models.UserDTO;
 import dev.daw.demo.services.UserService;
-import org.apache.catalina.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;

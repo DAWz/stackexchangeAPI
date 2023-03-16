@@ -12,10 +12,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.*;
 import java.util.stream.Collectors;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -62,7 +60,6 @@ public class QuestionServiceTest {
     @Test
     @DisplayName(value = "This test should return success when all questions are retrieved successfully with NULL tags")
     void getQuestions_shouldReturnQuestionDTOListWithoutTags(){
-        // given
         Question question = new Question();
         question.setId(1);
         List<Question> questionList = Collections.singletonList(question);
@@ -70,13 +67,10 @@ public class QuestionServiceTest {
         QuestionDTO response = new QuestionDTO();
         response.setId(question.getId());
 
-        // mocking findAll method
         when(mockQuestionRepo.findAll()).thenReturn(questionList);
 
-        // when
         List<QuestionDTO> actual = underTest.findAll();
 
-        // then
         assertEquals(question.getId(), actual.get(0).getId());
     }
     @Test
@@ -84,21 +78,16 @@ public class QuestionServiceTest {
     void getQuestions_shouldReturnEmptyQuestionDTOList(){
         List<Question> questionList = new ArrayList<Question>();
 
-        QuestionDTO response = new QuestionDTO();
-
-        // mocking findAll method
         when(mockQuestionRepo.findAll()).thenReturn(questionList);
 
-        // when
         List<QuestionDTO> actual = underTest.findAll();
 
-        // then
         assertEquals(questionList.size(), actual.size());
     }
 
     @Test
-    void getQuestion_itShouldReturnQuestionDto(){
-        // given
+    @DisplayName(value = "Test that find question returns the expected QuestionDTO")
+    void findQuestion_shouldReturnQuestionDto(){
         Question question = new Question();
         question.setId(1);
         question.setTags(Collections.singletonList(new Tag("java")));
@@ -112,10 +101,8 @@ public class QuestionServiceTest {
         when(mockQuestionRepo.findById(anyInt())).
                 thenReturn(Optional.of(question));
 
-        // when
         QuestionDTO actual = underTest.findQuestion(1);
 
-        // then
         assertAll(
                 () -> assertEquals(response.getId(), actual.getId()),
                 () -> assertEquals(response.getTags(), actual.getTags())
@@ -124,8 +111,8 @@ public class QuestionServiceTest {
     }
 
     @Test
-    void getQuestion_itShouldReturnQuestionDtoWithNullTags(){
-        // given
+    @DisplayName(value = "Test that find question return the question correctly if the tags are empty")
+    void findQuestion_shouldReturnQuestionDTOWithNullTags(){
         Question question = new Question();
         question.setId(1);
 
@@ -135,51 +122,44 @@ public class QuestionServiceTest {
         when(mockQuestionRepo.findById(anyInt())).
                 thenReturn(Optional.of(question));
 
-        // when
         QuestionDTO actual = underTest.findQuestion(1);
 
-        // then
         assertEquals(response.getId(), actual.getId());
     }
 
     @Test
-    void getQuestion_itShouldReturnNull_WhenQuestionNotFound(){
+    @DisplayName(value = "Test that find question returns null when the question is not found")
+    void findQuestion_shouldReturnNull_WhenQuestionNotFound(){
 
 
         when(mockQuestionRepo.findById(anyInt())).
                 thenReturn(Optional.empty());
 
-        // when
         QuestionDTO actual = underTest.findQuestion(1);
 
-        // then
         assertNull( actual);
     }
 
     @Test
-    void deleteById_itShouldReturnId_whenQuestionDeleted(){
-        // given
+    @DisplayName(value = "Test that delete question return the expected id of the deleted object")
+    void deleteQuestion_shouldReturnId(){
         Question question = new Question();
         question.setId(1);
         when(mockQuestionRepo.findById(anyInt())).thenReturn(Optional.of(question));
 
-        // when
         Integer actual = underTest.deleteQuestion(1);
 
-        // then
         assertEquals(1, actual);
     }
 
     @Test
-    void deleteById_itShouldReturnNull_whenQuestionNotFound(){
-        // given
+    @DisplayName(value = "Test that delete question returns null when the question is not found")
+    void deleteQuestion_shouldReturnNull(){
 
         when(mockQuestionRepo.findById(anyInt())).thenReturn(Optional.empty());
 
-        // when
         Integer actual = underTest.deleteQuestion(1);
 
-        // then
         assertNull(actual);
     }
 
