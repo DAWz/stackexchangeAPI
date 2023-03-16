@@ -1,6 +1,6 @@
-#Code Sample/ Stack Exchange Api
+# Code Sample/ Stack Exchange Api
 
-##Requirments
+## Requirments
 
 For building and running the application you need:
 
