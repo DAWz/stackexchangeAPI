@@ -24,7 +24,7 @@ docker pull abdelrahmanosama1/code-sample:latest
 ```
 And to run it use:
 ```shell
-docker run -d abdelrahmanosama1/code-sample:test
+docker run -d abdelrahmanosama1/code-sample:latest
 ```
 
 Finally you can use the `jar` file in `daw.dev.target`
@@ -55,7 +55,7 @@ The following fields are returned for each user:
 
 ## Architectural decisisions/ tech stack
 
-### Spring Boot 3
+### [Spring Boot 3](https://spring.io)
 Spring boot is most popular Java Framework now that is very powerful; providing annotations for almost everything and it has great community support.
 
 ### H2 SQL in-memory database:
