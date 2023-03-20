@@ -4,6 +4,8 @@
 
 For building and running the application you need:
 
+**There is a dockerized running instance of this app deployed on Amazon EC2, you can access its swagger page [here](http://ec2-13-53-245-221.eu-north-1.compute.amazonaws.com/swagger-ui/index.html).*
+
 - [JDK 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 - [Maven 3](https://maven.apache.org)
 
@@ -47,10 +49,10 @@ mvn clean test
 - The application is meant to call the stack exchange upon start to fetch the 20 latest featured questions by date from [StackOverflow.com Featured Questions API](https://api.stackexchange.com/docs/featured-questions)
 - The result of the call is stored in an in memory H2 SQL database (the database runs in memory with no presistence configuration)
 - The application exposes REST APIs to query/ delete the stored data, the expose APIs are:
-  - `HTTP GET` endpoint to get all the questions in the database
-  - `HTTP GET` endpoint to retrieve a single question by id
-  - `HTTP DELETE` endpoint to remove a single question by id from the database
-  - `HTTP GET` endpoint to retrieve all questions that have specified tags with the choice of conjunction/ disjunction (make sure to use the url parameter operation and set to either all/ any)
+  - `HTTP GET` /api/v1/questions endpoint to get all the questions in the database
+  - `HTTP GET` /api/v1/questions/{id} endpoint to retrieve a single question by id
+  - `HTTP DELETE` /api/v1/questions/{id} endpoint to remove a single question by id from the database
+  - `HTTP GET` api/v1/questions/tagSearch/{tag1,tag2}?operation=any endpoint to retrieve all questions that have specified tags with the choice of conjunction/ disjunction (make sure to use the url parameter operation and set to either all/ any)
 - The fields returned for each question are:
   - id (Number)
   - tags (Array of Strings)
@@ -61,7 +63,7 @@ mvn clean test
  
 *You can head to /swagger-ui.html upon running the app to find detailed documentation for the APIs*
 
-Additionally, the application exposes a `HTTP GET` endpoint that returns details about a user by id, acting as a proxy to [StackOverflow.com Users Api](https://api.stackexchange.com/docs/users-by-ids) the results of this proxy call are then cached in a Simple Cache so that the same query does not lead to multiple calls to the StackOverflow API.
+Additionally, the application exposes a `HTTP GET` /api/v1/user/{id} endpoint that returns details about a user by id, acting as a proxy to [StackOverflow.com Users Api](https://api.stackexchange.com/docs/users-by-ids) the results of this proxy call are then cached in a Simple Cache so that the same query does not lead to multiple calls to the StackOverflow API.
 The following fields are returned for each user:
 - user_id (Number)
 - creation_date (datetime in ISO8601 format as String)
