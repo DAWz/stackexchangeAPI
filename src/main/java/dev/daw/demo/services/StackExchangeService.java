@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.util.List;
 
 
-//@Component
 @Service
 public class StackExchangeService {
     private final String questionsUrl = "https://api.stackexchange.com/2.3/questions/featured?page=1&pagesize=20&order=desc&sort=creation&site=stackoverflow";
