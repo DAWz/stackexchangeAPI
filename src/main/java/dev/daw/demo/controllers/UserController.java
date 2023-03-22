@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/user")
 @Validated
@@ -30,7 +31,7 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "Found User by ID",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = UserDTO.class))}),
-            @ApiResponse(responseCode = "404", description = "Question not found", content = @Content),
+            @ApiResponse(responseCode = "404", description = "User not found", content = @Content),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied", content= @Content)
     })
     @GetMapping({"/{id}", "/{id}/"})

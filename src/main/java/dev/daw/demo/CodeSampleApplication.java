@@ -12,7 +12,4 @@ public class CodeSampleApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CodeSampleApplication.class, args);
 	}
-//	TODO:  testing (potentially integration)
-//	TODO:  dockerize, deploy, document architecture/decisions
-
 }
