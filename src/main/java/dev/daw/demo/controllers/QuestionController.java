@@ -1,7 +1,6 @@
 package dev.daw.demo.controllers;
 
 import dev.daw.demo.exceptions.ApplicationException;
-import dev.daw.demo.repositories.QuestionRepo;
 import dev.daw.demo.models.QuestionDTO;
 import dev.daw.demo.services.QuestionService;
 import io.swagger.v3.oas.annotations.Operation;
